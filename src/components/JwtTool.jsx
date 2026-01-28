@@ -189,7 +189,7 @@ function JwtTool() {
             value={input}
             onChange={(e) => { setInput(e.target.value); setSignatureValid(null); }}
             placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-            className="min-h-[120px] resize-none"
+            className="h-[25vh] resize-none overflow-y-auto"
           />
           
           <div className="space-y-2">

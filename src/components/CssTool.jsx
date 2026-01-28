@@ -136,7 +136,7 @@ function CssTool() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder=".container { display: flex; }"
-              className="min-h-[350px] resize-none"
+              className="h-[40vh] resize-none overflow-y-auto"
             />
           </CardContent>
         </Card>
@@ -151,7 +151,7 @@ function CssTool() {
               value={output}
               readOnly
               placeholder="Result will appear here..."
-              className="min-h-[350px] resize-none bg-muted/50"
+              className="h-[40vh] resize-none overflow-y-auto bg-muted/50"
             />
           </CardContent>
         </Card>

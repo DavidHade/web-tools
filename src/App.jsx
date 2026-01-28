@@ -68,7 +68,7 @@ function App() {
         <footer className="border-t border-gray-200 bg-white">
           <div className="container mx-auto px-4 py-4">
             <p className="text-center text-sm text-slate-500">
-              Built with React • All processing happens in your browser
+              Web Tools © {new Date().getFullYear()}
             </p>
           </div>
         </footer>
