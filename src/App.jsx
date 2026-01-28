@@ -8,11 +8,11 @@ import JwtTool from './components/JwtTool'
 import { cn } from '@/lib/utils'
 
 const tabs = [
-  { path: '/json', label: 'JSON', icon: Braces, component: JsonTool },
-  { path: '/base64', label: 'Base64', icon: Binary, component: Base64Tool },
-  { path: '/javascript', label: 'JavaScript', icon: FileCode, component: JavaScriptTool },
-  { path: '/css', label: 'CSS', icon: Palette, component: CssTool },
-  { path: '/jwt', label: 'JWT', icon: Key, component: JwtTool },
+  { path: '/web-tools/json', label: 'JSON', icon: Braces, component: JsonTool },
+  { path: '/web-tools/base64', label: 'Base64', icon: Binary, component: Base64Tool },
+  { path: '/web-tools/javascript', label: 'JavaScript', icon: FileCode, component: JavaScriptTool },
+  { path: '/web-tools/css', label: 'CSS', icon: Palette, component: CssTool },
+  { path: '/web-tools/jwt', label: 'JWT', icon: Key, component: JwtTool },
 ]
 
 function App() {
@@ -57,7 +57,7 @@ function App() {
         {/* Main Content */}
         <main className="container mx-auto px-4 py-8 flex-1">
           <Routes>
-            <Route path="/" element={<Navigate to="/json" replace />} />
+            <Route path="/" element={<Navigate to="/web-tools/json" replace />} />
             {tabs.map(tab => (
               <Route key={tab.path} path={tab.path} element={<tab.component />} />
             ))}
