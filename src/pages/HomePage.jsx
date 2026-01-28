@@ -2,31 +2,31 @@ import { Braces, Binary, FileCode, Palette, Key, Wrench } from 'lucide-react'
 
 const tools = [
   {
-    path: '/web-tools/json.html',
+    path: '/json.html',
     label: 'JSON Formatter',
     description: 'Format, minify, and validate JSON data',
     icon: Braces,
   },
   {
-    path: '/web-tools//base64.html',
+    path: '/base64.html',
     label: 'Base64 Encoder/Decoder',
     description: 'Encode and decode Base64 strings',
     icon: Binary,
   },
   {
-    path: '/web-tools//javascript.html',
+    path: '/javascript.html',
     label: 'JavaScript Minifier',
     description: 'Minify, beautify, and validate JavaScript',
     icon: FileCode,
   },
   {
-    path: '/web-tools//css.html',
+    path: '/css.html',
     label: 'CSS Minifier',
     description: 'Minify, beautify, and validate CSS',
     icon: Palette,
   },
   {
-    path: '/web-tools//jwt.html',
+    path: '/jwt.html',
     label: 'JWT Debugger',
     description: 'Decode and verify JWT tokens',
     icon: Key,

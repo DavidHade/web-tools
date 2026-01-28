@@ -8,7 +8,6 @@ const spaFallback = () => {
     configureServer(server) {
       return () => {
         server.middlewares.use((req, res, next) => {
-          // Skip if the request is for a file (has an extension) or is the root
           if (!req.url.includes('.') && req.url !== '/') {
             req.url = '/index.html'
           }
@@ -21,7 +20,7 @@ const spaFallback = () => {
 
 export default defineConfig({
   plugins: [react(), spaFallback()],
-  base: '/web-tools/',
+  base: '/',
   build: {
     outDir: 'dist',
     rollupOptions: {

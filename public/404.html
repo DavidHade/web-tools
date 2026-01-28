@@ -9,8 +9,8 @@
         l.protocol + '//' +
         l.hostname +
         (l.port ? ':' + l.port : '') +
-        '/web-tools/index.html?p=/' +
-        l.pathname.slice(1).split('/').slice(1).join('/')
+        '/index.html?p=/' +
+        l.pathname.slice(1).split('/').slice(0).join('/')
       );
     </script>
   </head>

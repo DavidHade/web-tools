@@ -2,11 +2,11 @@ import { Braces, Binary, FileCode, Palette, Key, Wrench } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const tabs = [
-  { path: '/web-tools/json.html', label: 'JSON', icon: Braces },
-  { path: '/web-tools/base64.html', label: 'Base64', icon: Binary },
-  { path: '/web-tools/javascript.html', label: 'JavaScript', icon: FileCode },
-  { path: '/web-tools/css.html', label: 'CSS', icon: Palette },
-  { path: '/web-tools/jwt.html', label: 'JWT', icon: Key },
+  { path: '/json.html', label: 'JSON', icon: Braces },
+  { path: '/base64.html', label: 'Base64', icon: Binary },
+  { path: '/javascript.html', label: 'JavaScript', icon: FileCode },
+  { path: '/css.html', label: 'CSS', icon: Palette },
+  { path: '/jwt.html', label: 'JWT', icon: Key },
 ]
 
 function isCurrentPage(path) {
@@ -20,7 +20,7 @@ export function Layout({ children }) {
       <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
-            <a href="/web-tools/" className="flex items-center gap-3">
+            <a href="/" className="flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
                 <Wrench className="h-5 w-5" />
               </div>
