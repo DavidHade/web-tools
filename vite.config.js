@@ -21,7 +21,7 @@ const spaFallback = () => {
 
 export default defineConfig({
   plugins: [react(), spaFallback()],
-  base: '/',
+  base: './',
   build: {
     outDir: 'dist'
   },
