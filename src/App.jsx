@@ -15,6 +15,15 @@ const tabs = [
   { path: '/jwt', label: 'JWT', icon: Key, component: JwtTool },
 ]
 
+// Handle GitHub Pages 404 redirect
+if (window.location.pathname.endsWith('/index.html')) {
+  const queryParams = new URLSearchParams(window.location.search)
+  const redirectPath = queryParams.get('p')
+  if (redirectPath) {
+    window.history.replaceState(null, '', '/web-tools' + redirectPath)
+  }
+}
+
 function App() {
   return (
     <BrowserRouter basename="/web-tools/">

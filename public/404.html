@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web Tools</title>
+    <script type="text/javascript">
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' +
+        l.hostname +
+        (l.port ? ':' + l.port : '') +
+        '/web-tools/index.html?p=/' +
+        l.pathname.slice(1).split('/').slice(1).join('/')
+      );
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
