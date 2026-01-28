@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, NavLink, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, NavLink, Navigate } from 'react-router-dom'
 import { Braces, Binary, FileCode, Palette, Key, Wrench } from 'lucide-react'
 import JsonTool from './components/JsonTool'
 import Base64Tool from './components/Base64Tool'
@@ -17,7 +17,7 @@ const tabs = [
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <div className="min-h-screen bg-gray-50 flex flex-col">
         {/* Header */}
         <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white">
@@ -73,7 +73,7 @@ function App() {
           </div>
         </footer>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 
