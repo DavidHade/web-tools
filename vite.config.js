@@ -23,7 +23,17 @@ export default defineConfig({
   plugins: [react(), spaFallback()],
   base: '/web-tools/',
   build: {
-    outDir: 'dist'
+    outDir: 'dist',
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        json: path.resolve(__dirname, 'json.html'),
+        base64: path.resolve(__dirname, 'base64.html'),
+        javascript: path.resolve(__dirname, 'javascript.html'),
+        css: path.resolve(__dirname, 'css.html'),
+        jwt: path.resolve(__dirname, 'jwt.html'),
+      }
+    }
   },
   resolve: {
     alias: {
