@@ -4,12 +4,57 @@ import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { Copy, Trash2, CheckCircle, AlertCircle, Minimize2, Maximize2, Check } from 'lucide-react'
+import { Copy, Trash2, CheckCircle, AlertCircle, Minimize2, Maximize2, Check, Code2 } from 'lucide-react'
 
 function JsonTool() {
   const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
   const [message, setMessage] = useState({ type: '', text: '' })
+
+  const jsonToXml = (json, nodeName = 'root', pretty = true, indent = 0) => {
+    const indentStr = pretty ? '  '.repeat(indent) : ''
+    const newline = pretty ? '\n' : ''
+
+    if (json === null || json === undefined) {
+      return `${indentStr}<${nodeName} />${newline}`
+    }
+
+    if (typeof json !== 'object') {
+      return `${indentStr}<${nodeName}>${json}</${nodeName}>${newline}`
+    }
+
+    if (Array.isArray(json)) {
+      let xml = ''
+      json.forEach((item) => {
+        xml += jsonToXml(item, nodeName, pretty, indent)
+      })
+      return xml
+    }
+
+    let xml = `${indentStr}<${nodeName}>${newline}`
+    for (const key in json) {
+      if (json.hasOwnProperty(key)) {
+        const value = json[key]
+        if (Array.isArray(value)) {
+          value.forEach((item) => {
+            xml += jsonToXml(item, key, pretty, indent + 1)
+          })
+        } else if (typeof value === 'object' && value !== null) {
+          xml += jsonToXml(value, key, pretty, indent + 1)
+        } else {
+          const safeValue = String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&apos;')
+          xml += `${indentStr}  <${key}>${safeValue}</${key}>${newline}`
+        }
+      }
+    }
+    xml += `${indentStr}</${nodeName}>${newline}`
+    return xml
+  }
 
   const formatJson = () => {
     try {
@@ -42,6 +87,18 @@ function JsonTool() {
     }
   }
 
+  const convertToXml = () => {
+    try {
+      const parsed = JSON.parse(input)
+      const xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + jsonToXml(parsed, 'root', true, 0)
+      setOutput(xml)
+      setMessage({ type: 'success', text: 'Converted to XML successfully!' })
+    } catch (e) {
+      setMessage({ type: 'error', text: `Invalid JSON: ${e.message}` })
+      setOutput('')
+    }
+  }
+
   const copyOutput = () => {
     navigator.clipboard.writeText(output)
     setMessage({ type: 'success', text: 'Copied to clipboard!' })
@@ -57,7 +114,7 @@ function JsonTool() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">JSON Formatter</h1>
-        <p className="text-muted-foreground mt-2">Format, minify, and validate JSON data</p>
+        <p className="text-muted-foreground mt-2">Format, minify, validate, and convert JSON data to XML</p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -106,6 +163,10 @@ function JsonTool() {
             <Button onClick={validateJson} variant="outline">
               <Check className="mr-2 h-4 w-4" />
               Validate
+            </Button>
+            <Button onClick={convertToXml} variant="outline">
+              <Code2 className="mr-2 h-4 w-4" />
+              To XML
             </Button>
             <Button onClick={copyOutput} variant="outline" disabled={!output}>
               <Copy className="mr-2 h-4 w-4" />
