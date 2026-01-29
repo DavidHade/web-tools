@@ -13,6 +13,7 @@ dist/
 *.njsproj
 *.sln
 *.sw?
+not-public/
 
 # OS files
 .DS_Store
