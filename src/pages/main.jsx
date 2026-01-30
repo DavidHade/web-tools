@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import {Layout} from "@/components/Layout.jsx";
-import {Binary, Braces, FileCode, Key, Palette, Code2, QrCode} from "lucide-react";
+import {Binary, Braces, FileCode, Key, Palette, Code2, QrCode, FileText} from "lucide-react";
 import {Tool} from "@/components/ui/tool.jsx";
 
 const tools = [
@@ -47,6 +47,13 @@ const tools = [
         description: 'Generate QR codes from text or URLs',
         icon: QrCode,
         longDescription: 'Create QR codes from any text or URL, download as PNG images, and easily share encoded data.',
+    },
+    {
+        path: '/pdf.html',
+        label: 'PDF Tools',
+        description: 'Merge, split, convert PDFs to .docx or images',
+        icon: FileText,
+        longDescription: 'Merge multiple PDFs, split into multiple pages, and convert PDF to .docx or images.',
     },
     {
         path: '/jwt.html',

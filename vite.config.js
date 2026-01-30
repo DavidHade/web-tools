@@ -32,6 +32,7 @@ export default defineConfig({
         css: path.resolve(__dirname, 'css.html'),
         xml: path.resolve(__dirname, 'xml.html'),
         qr: path.resolve(__dirname, 'qr.html'),
+        pdf: path.resolve(__dirname, 'pdf.html'),
         jwt: path.resolve(__dirname, 'jwt.html'),
       }
     }
