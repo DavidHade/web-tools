@@ -1,11 +1,12 @@
 import {cn} from "@/lib/utils.js";
-import {Binary, Braces, FileCode, Key, Palette} from "lucide-react";
+import {Binary, Braces, FileCode, Key, Palette, Code2} from "lucide-react";
 
 const tabs = [
     { path: '/json.html', label: 'JSON', icon: Braces },
     { path: '/base64.html', label: 'Base64', icon: Binary },
     { path: '/javascript.html', label: 'JavaScript', icon: FileCode },
     { path: '/css.html', label: 'CSS', icon: Palette },
+    { path: '/xml.html', label: 'XML', icon: Code2 },
     { path: '/jwt.html', label: 'JWT', icon: Key },
 ]
 

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import {Layout} from "@/components/Layout.jsx";
-import {Binary, Braces, FileCode, Key, Palette} from "lucide-react";
+import {Binary, Braces, FileCode, Key, Palette, Code2} from "lucide-react";
 import {Tool} from "@/components/ui/tool.jsx";
 
 const tools = [
@@ -33,6 +33,13 @@ const tools = [
         description: 'Minify, beautify, and validate CSS',
         icon: Palette,
         longDescription: 'Minify CSS stylesheets to optimize website performance and reduce bandwidth usage.',
+    },
+    {
+        path: '/xml.html',
+        label: 'XML Converter',
+        description: 'Format & validate XML, convert to JSON',
+        icon: Code2,
+        longDescription: 'Convert XML to JSON, format, and validate XML syntax. Perfect for working with data interchange formats.',
     },
     {
         path: '/jwt.html',

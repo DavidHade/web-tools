@@ -30,6 +30,7 @@ export default defineConfig({
         base64: path.resolve(__dirname, 'base64.html'),
         javascript: path.resolve(__dirname, 'javascript.html'),
         css: path.resolve(__dirname, 'css.html'),
+        xml: path.resolve(__dirname, 'xml.html'),
         jwt: path.resolve(__dirname, 'jwt.html'),
       }
     }
