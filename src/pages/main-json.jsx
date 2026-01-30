@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Base64Page from './pages/Base64Page'
 import './index.css'
+import JsonTool from "@/components/JsonTool.jsx";
+import {Layout} from "@/components/Layout.jsx";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Base64Page />
+      <Layout>
+          <JsonTool />
+      </Layout>
   </React.StrictMode>,
 )

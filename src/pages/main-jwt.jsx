@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import CssPage from './pages/CssPage'
 import './index.css'
+import JwtTool from "@/components/JwtTool.jsx";
+import {Layout} from "@/components/Layout.jsx";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <CssPage />
+      <Layout>
+          <JwtTool />
+      </Layout>
   </React.StrictMode>,
 )

@@ -29,6 +29,10 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
+.border-default {
+  border-color: var(--color-border);
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
