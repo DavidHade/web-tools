@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import {Layout} from "@/components/Layout.jsx";
-import {Binary, Braces, FileCode, Key, Palette, Code2} from "lucide-react";
+import {Binary, Braces, FileCode, Key, Palette, Code2, QrCode} from "lucide-react";
 import {Tool} from "@/components/ui/tool.jsx";
 
 const tools = [
@@ -40,6 +40,13 @@ const tools = [
         description: 'Format & validate XML, convert to JSON',
         icon: Code2,
         longDescription: 'Convert XML to JSON, format, and validate XML syntax. Perfect for working with data interchange formats.',
+    },
+    {
+        path: '/qr.html',
+        label: 'QR Code Generator',
+        description: 'Generate QR codes from text or URLs',
+        icon: QrCode,
+        longDescription: 'Create QR codes from any text or URL, download as PNG images, and easily share encoded data.',
     },
     {
         path: '/jwt.html',
