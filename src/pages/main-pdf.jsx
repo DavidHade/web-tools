@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from 'react'
+import React, { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { Layout } from '@/components/Layout'

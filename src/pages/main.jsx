@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import {Layout} from "@/components/Layout.jsx";
+import { Layout } from "@/components/Layout.jsx";
 import { DarkModeProvider, useDarkMode } from "@/contexts/DarkModeContext.jsx"
-import {Binary, Braces, FileCode, Key, Palette, Code2, QrCode, FileText} from "lucide-react";
-import {Tool} from "@/components/ui/tool.jsx";
+import { Binary, Braces, FileCode, Key, Palette, Code2, QrCode, FileText } from "lucide-react";
+import { Tool } from "@/components/ui/tool.jsx";
 
 const tools = [
     {
