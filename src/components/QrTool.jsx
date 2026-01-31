@@ -53,12 +53,12 @@ function QrTool() {
     }
   }
 
-  const copyQrUrl = () => {
+  const copyQrUrl = async () => {
     if (!qrCode) {
       setMessage({ type: 'error', text: 'Please generate a QR code first' })
       return
     }
-    navigator.clipboard.writeText(qrCode)
+    await navigator.clipboard.writeText(qrCode)
     setMessage({ type: 'success', text: 'QR code URL copied to clipboard!' })
   }
 

@@ -150,8 +150,8 @@ function XmlTool() {
     return result.trim()
   }
 
-  const copyOutput = () => {
-    navigator.clipboard.writeText(output)
+  const copyOutput = async () => {
+    await navigator.clipboard.writeText(output)
     setMessage({ type: 'success', text: 'Copied to clipboard!' })
   }
 

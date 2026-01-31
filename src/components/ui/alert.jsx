@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import { cva } from "class-variance-authority"
+import { useDarkMode } from "@/contexts/DarkModeContext"
 
 const alertVariants = cva(
   "relative w-full rounded-lg border px-4 py-3 text-sm flex items-center gap-3 [&>svg]:flex-shrink-0 [&>svg]:text-foreground",
@@ -9,9 +10,9 @@ const alertVariants = cva(
       variant: {
         default: "bg-background text-foreground",
         destructive:
-          "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
+          "border-destructive/50 text-destructive [&>svg]:text-destructive",
         success:
-          "border-green-500/50 text-green-700 bg-green-50 dark:border-green-500 [&>svg]:text-green-600",
+          "border-green-500/50 text-green-700 bg-green-50 [&>svg]:text-green-600",
       },
     },
     defaultVariants: {
@@ -21,14 +22,27 @@ const alertVariants = cva(
 )
 
 const Alert = React.forwardRef(
-  ({ className, variant, ...props }, ref) => (
+  ({ className, variant, ...props }, ref) => {
+    const { isDarkMode } = useDarkMode()
+    
+    let darkVariantClasses = ""
+    if (isDarkMode) {
+      if (variant === "destructive") {
+        darkVariantClasses = "border-red-900 text-red-400"
+      } else if (variant === "success") {
+        darkVariantClasses = "border-green-900 text-green-400 bg-green-950"
+      }
+    }
+    
+    return (
       <div
-      ref={ref}
-      role="alert"
-      className={cn(alertVariants({ variant }), className)}
-      {...props}
-    />
-  )
+        ref={ref}
+        role="alert"
+        className={cn(alertVariants({ variant }), darkVariantClasses, className)}
+        {...props}
+      />
+    )
+  }
 )
 Alert.displayName = "Alert"
 

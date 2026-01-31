@@ -1,5 +1,6 @@
 import {cn} from "@/lib/utils.js";
 import {Binary, Braces, FileCode, Key, Palette, Code2, QrCode, FileText} from "lucide-react";
+import { useDarkMode } from "@/contexts/DarkModeContext.jsx"
 
 const tabs = [
     { path: '/json.html', label: 'JSON', icon: Braces },
@@ -17,6 +18,8 @@ function isCurrentPage(path) {
 }
 
 export function Navigation(){
+    const { isDarkMode } = useDarkMode()
+
     return(
         <nav className="flex items-center gap-1">
             {tabs.map(tab => {
@@ -30,6 +33,8 @@ export function Navigation(){
                             "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                             isActive
                                 ? "bg-blue-600 text-white"
+                                : isDarkMode
+                                ? "text-slate-300 hover:bg-slate-800 hover:text-white"
                                 : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                         )}
                     >

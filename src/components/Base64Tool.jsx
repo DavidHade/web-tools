@@ -32,8 +32,8 @@ function Base64Tool() {
     }
   }
 
-  const copyOutput = () => {
-    navigator.clipboard.writeText(output)
+  const copyOutput = async () => {
+    await navigator.clipboard.writeText(output)
     setMessage({ type: 'success', text: 'Copied to clipboard!' })
   }
 
@@ -81,7 +81,7 @@ function Base64Tool() {
               value={output}
               readOnly
               placeholder="Result will appear here..."
-              className="h-[40vh] resize-none overflow-y-auto bg-muted/50"
+              className="h-[40vh] resize-none overflow-y-auto opacity-75"
             />
           </CardContent>
         </Card>

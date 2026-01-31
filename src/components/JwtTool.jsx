@@ -147,8 +147,8 @@ function JwtTool() {
     }
   }
 
-  const copyPart = (part, name) => {
-    navigator.clipboard.writeText(part)
+  const copyPart = async (part, name) => {
+    await navigator.clipboard.writeText(part)
     setMessage({ type: 'success', text: `${name} copied to clipboard!` })
   }
 

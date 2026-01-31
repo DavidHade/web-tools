@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import {Layout} from "@/components/Layout.jsx";
+import { DarkModeProvider, useDarkMode } from "@/contexts/DarkModeContext.jsx"
 import {Binary, Braces, FileCode, Key, Palette, Code2, QrCode, FileText} from "lucide-react";
 import {Tool} from "@/components/ui/tool.jsx";
 
@@ -64,61 +65,70 @@ const tools = [
     },
 ]
 
+function MainContent() {
+  const { isDarkMode } = useDarkMode()
+  
+  return (
+    <Layout navigation={null}>
+      <main className="container mx-auto px-4 py-12 flex-1">
+        <article className="space-y-12">
+          {/* Hero Section */}
+          <section className="text-center space-y-4">
+            <h1 className={`text-4xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+              Web Developer Tools
+            </h1>
+            <p className={`text-xl max-w-2xl mx-auto ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+              Free online tools for developers. Format JSON, encode/decode Base64, minify CSS & JavaScript, debug JWT tokens, and more.
+            </p>
+          </section>
+
+          {/* Tools Grid */}
+          <section className="space-y-6">
+            <h2 className={`text-2xl font-bold sr-only ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Available Tools</h2>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {tools.map((toolInfo) => (
+                <Tool key={toolInfo.path} toolInfo={toolInfo} />
+              ))}
+            </div>
+          </section>
+
+          {/* Benefits Section */}
+          <section className={`space-y-6 pt-8 border-t ${isDarkMode ? 'border-slate-700' : 'border-gray-200'}`}>
+            <h2 className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Why Use Web Tools?</h2>
+            <ul className="grid gap-4 md:grid-cols-3">
+              <li className="flex gap-3">
+                <span className={`flex h-6 w-6 items-center justify-center rounded-full flex-shrink-0 ${isDarkMode ? 'bg-blue-900 text-blue-400' : 'bg-blue-100 text-blue-600'}`}>✓</span>
+                <div>
+                  <h3 className={`font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Free & Fast</h3>
+                  <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>No installation required. Use online instantly.</p>
+                </div>
+              </li>
+              <li className="flex gap-3">
+                <span className={`flex h-6 w-6 items-center justify-center rounded-full flex-shrink-0 ${isDarkMode ? 'bg-blue-900 text-blue-400' : 'bg-blue-100 text-blue-600'}`}>✓</span>
+                <div>
+                  <h3 className={`font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Secure</h3>
+                  <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>Your data stays on your device. No server uploads.</p>
+                </div>
+              </li>
+              <li className="flex gap-3">
+                <span className={`flex h-6 w-6 items-center justify-center rounded-full flex-shrink-0 ${isDarkMode ? 'bg-blue-900 text-blue-400' : 'bg-blue-100 text-blue-600'}`}>✓</span>
+                <div>
+                  <h3 className={`font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Developer Friendly</h3>
+                  <p className={`text-sm ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>Built by developers for developers.</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </article>
+      </main>
+    </Layout>
+  )
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <Layout navigation={null}>
-          {/* Main Content */}
-          <main className="container mx-auto px-4 py-12 flex-1">
-              <article className="space-y-12">
-                  {/* Hero Section */}
-                  <section className="text-center space-y-4">
-                      <h1 className="text-4xl font-bold tracking-tight text-slate-900">
-                          Web Developer Tools
-                      </h1>
-                      <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                          Free online tools for developers. Format JSON, encode/decode Base64, minify CSS & JavaScript, debug JWT tokens, and more.
-                      </p>
-                  </section>
-
-                  {/* Tools Grid */}
-                  <section className="space-y-6">
-                      <h2 className="text-2xl font-bold text-slate-900 sr-only">Available Tools</h2>
-                      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                          {tools.map((toolInfo) => (
-                              <Tool key={toolInfo.path} toolInfo={toolInfo} />
-                          ))}
-                      </div>
-                  </section>
-
-                  {/* Benefits Section */}
-                  <section className="space-y-6 pt-8 border-t border-gray-200">
-                      <h2 className="text-2xl font-bold text-slate-900">Why Use Web Tools?</h2>
-                      <ul className="grid gap-4 md:grid-cols-3">
-                          <li className="flex gap-3">
-                              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-blue-600 flex-shrink-0">✓</span>
-                              <div>
-                                  <h3 className="font-semibold text-slate-900">Free & Fast</h3>
-                                  <p className="text-sm text-slate-600">No installation required. Use online instantly.</p>
-                              </div>
-                          </li>
-                          <li className="flex gap-3">
-                              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-blue-600 flex-shrink-0">✓</span>
-                              <div>
-                                  <h3 className="font-semibold text-slate-900">Secure</h3>
-                                  <p className="text-sm text-slate-600">Your data stays on your device. No server uploads.</p>
-                              </div>
-                          </li>
-                          <li className="flex gap-3">
-                              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-blue-600 flex-shrink-0">✓</span>
-                              <div>
-                                  <h3 className="font-semibold text-slate-900">Developer Friendly</h3>
-                                  <p className="text-sm text-slate-600">Built by developers for developers.</p>
-                              </div>
-                          </li>
-                      </ul>
-                  </section>
-              </article>
-          </main>
-      </Layout>
+    <DarkModeProvider>
+      <MainContent />
+    </DarkModeProvider>
   </React.StrictMode>
 )

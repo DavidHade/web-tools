@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
+import { useDarkMode } from "@/contexts/DarkModeContext"
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
@@ -34,9 +35,37 @@ const buttonVariants = cva(
 
 const Button = React.forwardRef(
   ({ className, variant, size, ...props }, ref) => {
+    const { isDarkMode } = useDarkMode()
+    
+    let darkModeClasses = ""
+    
+    if (isDarkMode) {
+      switch (variant) {
+        case "outline":
+          darkModeClasses = "border-slate-600 bg-slate-950 hover:bg-slate-900 hover:text-white"
+          break
+        case "secondary":
+          darkModeClasses = "bg-slate-700 text-white hover:bg-slate-600"
+          break
+        case "ghost":
+          darkModeClasses = "hover:bg-slate-800 hover:text-white text-slate-300"
+          break
+        case "destructive":
+          darkModeClasses = "bg-red-900 text-red-100 hover:bg-red-800"
+          break
+        case "link":
+          darkModeClasses = "text-blue-400 hover:text-blue-300"
+          break
+        case "default":
+        default:
+          darkModeClasses = "bg-blue-600 text-white hover:bg-blue-700"
+          break
+      }
+    }
+    
     return (
       <button
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size }), darkModeClasses, className)}
         ref={ref}
         {...props}
       />
