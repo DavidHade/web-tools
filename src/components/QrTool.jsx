@@ -102,7 +102,7 @@ function QrTool() {
           <CardContent>
             <div className=
               { isDarkMode ? 
-                "h-[40vh] bg-muted/10 rounded-lg flex items-center justify-center overflow-auto" :
+                "h-[40vh] bg-slate-950 rounded-lg flex items-center justify-center overflow-auto" :
                 "h-[40vh] bg-muted/50 rounded-lg flex items-center justify-center overflow-auto"
               }>
               {qrCode ? (

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Textarea } from '@/components/ui/textarea'
+import {Textarea, TextareaResult} from '@/components/ui/textarea'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Copy, Trash2, CheckCircle, AlertCircle, Maximize2, Code2, Check } from 'lucide-react'
 
@@ -190,11 +190,11 @@ function XmlTool() {
             <CardDescription>Converted result</CardDescription>
           </CardHeader>
           <CardContent>
-            <Textarea
+            <TextareaResult
               value={output}
               readOnly
               placeholder="Result will appear here..."
-              className="h-[40vh] resize-none overflow-y-auto opacity-75"
+              className="h-[40vh] resize-none overflow-y-auto"
             />
           </CardContent>
         </Card>

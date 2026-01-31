@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Trash2, CheckCircle, AlertCircle, Upload, Download, Combine, Scissors, X, FileText } from 'lucide-react'
+import { useDarkMode } from '@/contexts/DarkModeContext'
 import * as pdfjsLib from 'pdfjs-dist'
 import { PDFDocument } from 'pdf-lib'
 import { Document, Packer, Paragraph, TextRun } from 'docx'
@@ -14,6 +15,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 function PdfTool() {
+  const { isDarkMode } = useDarkMode()
   const [files, setFiles] = useState([])
   const [message, setMessage] = useState({ type: '', text: '' })
   const [loading, setLoading] = useState(false)
@@ -32,7 +34,7 @@ function PdfTool() {
       setMessage({ type: 'error', text: 'Please upload only PDF files' })
       return
     }
-
+    
     if (pdfFiles.length > 0) {
       setFiles(prev => [...prev, ...pdfFiles])
       setMessage({ type: 'success', text: `${pdfFiles.length} PDF file(s) uploaded successfully` })
@@ -302,7 +304,7 @@ function PdfTool() {
           <CardDescription>Select one or more PDF files to process</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition-colors relative">
+          <div className={`border-2 ${isDarkMode ? "bg-slate-950" : ""} border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition-colors relative`}>
             <input
               type="file"
               multiple
@@ -320,19 +322,19 @@ function PdfTool() {
 
           {files.length > 0 && (
             <div className="mt-4 space-y-2">
-              <p className="text-sm font-medium text-gray-700">Uploaded Files ({files.length})</p>
+              <p className={`text-sm font-medium ${isDarkMode ? "text-gray-100" : "text-gray-700"}`}>Uploaded Files ({files.length})</p>
               <div className="space-y-1">
                 {files.map((file, index) => (
-                  <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded">
-                    <span className="text-sm text-gray-600">{file.name}</span>
-                    <Button
-                      onClick={() => removeFile(index)}
-                      variant="ghost"
-                      size="sm"
-                      className="h-6 w-6 p-0"
-                    >
-                      ✕
-                    </Button>
+                    <div key={index} className={`flex items-center justify-between ${isDarkMode ? "bg-slate-950" : "bg-gray-50"} p-3 rounded`}>
+                      <span className={`text-sm ${isDarkMode ? "text-gray-100" : "text-gray-600"}`}>{file.name}</span>
+                      <Button
+                        onClick={() => removeFile(index)}
+                        variant="ghost"
+                        size="sm"
+                        className="h-6 w-6 p-0"
+                      >
+                        ✕
+                      </Button>
                   </div>
                 ))}
               </div>
@@ -389,7 +391,7 @@ function PdfTool() {
           <CardDescription>All operations are processed client-side</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-gray-600">
+          <p className={`text-sm ${isDarkMode ? "text-gray-100" : "text-gray-600"}`}>
             These PDF operations are now fully functional and run directly in your browser:
           </p>
           <ul className="text-sm mt-3 space-y-1 ml-4">
@@ -422,7 +424,7 @@ function PdfTool() {
             <CardContent className="space-y-4">
               {/* Number of Parts */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Number of Parts</label>
+                <label className={`text-sm font-medium ${isDarkMode ? 'text-slate-200' : 'text-gray-700'}`}>Number of Parts</label>
                 <div className="flex items-center gap-2">
                   <input
                     type="range"
@@ -438,37 +440,37 @@ function PdfTool() {
                     max={totalPages}
                     value={splitConfig.numParts}
                     onChange={(e) => updateNumParts(Math.max(2, Math.min(totalPages, parseInt(e.target.value) || 2)))}
-                    className="w-16 px-3 py-2 border border-gray-300 rounded text-sm"
+                    className={`w-16 px-3 py-2 border rounded text-sm ${isDarkMode ? 'bg-slate-700 border-slate-600 text-white' : 'border-gray-300 bg-white text-gray-900'}`}
                   />
                 </div>
               </div>
 
               {/* Pages Per Part */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Pages Per Part</label>
-                <div className="space-y-2 max-h-48 overflow-y-auto">
+                <label className={`text-sm font-medium ${isDarkMode ? 'text-slate-200' : 'text-gray-700'}`}>Pages Per Part</label>
+                <div className={`space-y-2 max-h-48 overflow-y-auto ${isDarkMode ? 'bg-slate-700/30' : 'bg-gray-50'} p-3 rounded`}>
                   {splitConfig.parts.map((pages, index) => (
                     <div key={index} className="flex items-center gap-2">
-                      <span className="text-sm text-gray-600 w-12">Part {index + 1}:</span>
+                      <span className={`text-sm w-12 ${isDarkMode ? 'text-slate-300' : 'text-gray-600'}`}>Part {index + 1}:</span>
                       <input
                         type="number"
                         min="0"
                         max={totalPages}
                         value={pages}
                         onChange={(e) => updatePartPages(index, e.target.value)}
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded text-sm"
+                        className={`flex-1 px-3 py-2 border rounded text-sm ${isDarkMode ? 'bg-slate-700 border-slate-600 text-white' : 'border-gray-300 bg-white text-gray-900'}`}
                       />
-                      <span className="text-xs text-gray-500 w-8 text-right">{pages}/{totalPages}</span>
+                      <span className={`text-xs w-8 text-right ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>{pages}/{totalPages}</span>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className={`text-xs ${isDarkMode ? 'text-slate-400' : 'text-gray-500'}`}>
                   Total: {splitConfig.parts.reduce((sum, p) => sum + p, 0)}/{totalPages} pages
                 </p>
               </div>
 
               {/* Preview */}
-              <div className="bg-gray-50 p-3 rounded text-sm text-gray-600">
+              <div className={`p-3 rounded text-sm ${isDarkMode ? 'bg-slate-700/50 text-slate-300' : 'bg-gray-50 text-gray-600'}`}>
                 <p className="font-medium mb-2">Split Preview:</p>
                 {splitConfig.parts.map((pages, index) => (
                   pages > 0 && (
