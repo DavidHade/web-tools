@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Copy, Trash2, CheckCircle, AlertCircle, Download } from 'lucide-react'
+import { useDarkMode } from "@/contexts/DarkModeContext"
 
 function QrTool() {
   const [input, setInput] = useState('')
@@ -68,6 +69,8 @@ function QrTool() {
     setMessage({ type: '', text: '' })
   }
 
+  const { isDarkMode } = useDarkMode()
+
   return (
     <div className="space-y-6">
       <div>
@@ -97,7 +100,11 @@ function QrTool() {
             <CardDescription>Generated QR code</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-[40vh] bg-muted/50 rounded-lg flex items-center justify-center overflow-auto">
+            <div className=
+              { isDarkMode ? 
+                "h-[40vh] bg-muted/10 rounded-lg flex items-center justify-center overflow-auto" :
+                "h-[40vh] bg-muted/50 rounded-lg flex items-center justify-center overflow-auto"
+              }>
               {qrCode ? (
                 <img 
                   src={qrCode} 

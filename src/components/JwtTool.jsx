@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Textarea } from '@/components/ui/textarea'
+import { Textarea, TextPre } from '@/components/ui/textarea'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Badge } from '@/components/ui/badge'
 import { Label } from '@/components/ui/label'
 import { Copy, Trash2, CheckCircle, AlertCircle, Unlock, FileText, ShieldCheck, ShieldX, Eye, EyeOff } from 'lucide-react'
+import { useDarkMode } from "@/contexts/DarkModeContext"
+import { clsx } from "clsx";
 
 function JwtTool() {
   const [input, setInput] = useState('')
@@ -17,7 +19,8 @@ function JwtTool() {
   const [signatureValid, setSignatureValid] = useState(null)
   const [algorithm, setAlgorithm] = useState('')
   const [message, setMessage] = useState({ type: '', text: '' })
-
+  const { isDarkMode } = useDarkMode()
+  
   const base64UrlDecode = (str) => {
     let base64 = str.replace(/-/g, '+').replace(/_/g, '/')
     const padding = base64.length % 4
@@ -261,9 +264,9 @@ function JwtTool() {
               </div>
             </CardHeader>
             <CardContent>
-              <pre className="text-sm font-mono bg-muted/50 p-4 rounded-lg overflow-x-auto whitespace-pre-wrap">
+              <TextPre>
                 {header}
-              </pre>
+              </TextPre>
             </CardContent>
           </Card>
 
@@ -280,9 +283,9 @@ function JwtTool() {
               </div>
             </CardHeader>
             <CardContent>
-              <pre className="text-sm font-mono bg-muted/50 p-4 rounded-lg overflow-x-auto whitespace-pre-wrap">
+              <TextPre>
                 {payload}
-              </pre>
+              </TextPre>
             </CardContent>
           </Card>
 
@@ -311,9 +314,12 @@ function JwtTool() {
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              <pre className="text-sm font-mono bg-gray-100 p-4 rounded-lg overflow-x-auto break-all">
+              <pre className={clsx(
+                  'text-sm font-mono p-4 rounded-lg overflow-x-auto break-all', isDarkMode ? 'bg-slate-950' : 'bg-gray-100'
+              )}>
                 {signature}
               </pre>
+              
               {signatureValid === null && (
                 <Alert className="bg-amber-50 border-amber-200">
                   <ShieldCheck className="h-4 w-4 text-amber-600" />

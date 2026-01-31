@@ -313,8 +313,8 @@ function PdfTool() {
             />
             <label htmlFor="pdf-upload" className="cursor-pointer block relative z-10 pointer-events-none">
               <Upload className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-              <p className="text-sm font-medium text-gray-700">Click to upload or drag and drop</p>
-              <p className="text-xs text-gray-500 mt-1">PDF files only</p>
+              <p className="text-sm font-medium">Click to upload or drag and drop</p>
+              <p className="text-xs mt-1">PDF files only</p>
             </label>
           </div>
 
@@ -392,7 +392,7 @@ function PdfTool() {
           <p className="text-sm text-gray-600">
             These PDF operations are now fully functional and run directly in your browser:
           </p>
-          <ul className="text-sm text-gray-600 mt-3 space-y-1 ml-4">
+          <ul className="text-sm mt-3 space-y-1 ml-4">
             <li>✓ Merge multiple PDFs into one</li>
             <li>✓ Split PDF pages into separate files</li>
             <li>✓ Convert PDF pages to images (PNG)</li>

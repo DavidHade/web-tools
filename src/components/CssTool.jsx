@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Textarea } from '@/components/ui/textarea'
+import { Textarea, TextareaResult } from '@/components/ui/textarea'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Copy, Trash2, CheckCircle, AlertCircle, Minimize2, Maximize2, Check } from 'lucide-react'
 
@@ -147,11 +147,11 @@ function CssTool() {
             <CardDescription>Processed CSS</CardDescription>
           </CardHeader>
           <CardContent>
-            <Textarea
+            <TextareaResult
               value={output}
               readOnly
               placeholder="Result will appear here..."
-              className="h-[40vh] resize-none overflow-y-auto bg-muted/50"
+              className="h-[40vh] resize-none overflow-y-auto"
             />
           </CardContent>
         </Card>

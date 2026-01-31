@@ -5,6 +5,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Copy, Trash2, CheckCircle, AlertCircle, Minimize2, Maximize2, Check, Code2 } from 'lucide-react'
+import { TextareaResult } from './ui/textarea'
 
 function JsonTool() {
   const [input, setInput] = useState('')
@@ -139,11 +140,11 @@ function JsonTool() {
             <CardDescription>Formatted result</CardDescription>
           </CardHeader>
           <CardContent>
-            <Textarea
+            <TextareaResult
               value={output}
               readOnly
               placeholder="Result will appear here..."
-              className="h-[40vh] resize-none overflow-y-auto bg-muted/50"
+              className="h-[40vh] resize-none overflow-y-auto"
             />
           </CardContent>
         </Card>

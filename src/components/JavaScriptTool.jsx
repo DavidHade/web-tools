@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Copy, Trash2, CheckCircle, AlertCircle, Minimize2, Maximize2, Check } from 'lucide-react'
+import { TextareaResult } from './ui/textarea'
 
 function JavaScriptTool() {
   const [input, setInput] = useState('')
@@ -153,11 +154,11 @@ function JavaScriptTool() {
             <CardDescription>Processed code</CardDescription>
           </CardHeader>
           <CardContent>
-            <Textarea
+            <TextareaResult
               value={output}
               readOnly
               placeholder="Result will appear here..."
-              className="h-[40vh] resize-none overflow-y-auto bg-muted/50"
+              className="h-[40vh] resize-none overflow-y-auto"
             />
           </CardContent>
         </Card>

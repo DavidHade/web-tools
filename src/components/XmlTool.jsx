@@ -194,7 +194,7 @@ function XmlTool() {
               value={output}
               readOnly
               placeholder="Result will appear here..."
-              className="h-[40vh] resize-none overflow-y-auto bg-muted/50"
+              className="h-[40vh] resize-none overflow-y-auto opacity-75"
             />
           </CardContent>
         </Card>
