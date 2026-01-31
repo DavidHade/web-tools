@@ -34,6 +34,33 @@ export default defineConfig({
         qr: path.resolve(__dirname, 'qr.html'),
         pdf: path.resolve(__dirname, 'pdf.html'),
         jwt: path.resolve(__dirname, 'jwt.html'),
+      },
+      output: {
+        manualChunks(id) {
+          // Split pdf-lib operations
+          if (id.includes('node_modules/pdf-lib')) {
+            return 'vendor-pdf-lib'
+          }
+          // Split pdfjs rendering into smaller chunks
+          if (id.includes('node_modules/pdfjs-dist')) {
+            // Further split pdfjs based on file size
+            if (id.includes('pdfjs-dist/build/pdf.js')) {
+              return 'vendor-pdfjs-core'
+            }
+            if (id.includes('pdfjs-dist/build/pdf.worker')) {
+              return 'vendor-pdfjs-worker'
+            }
+            return 'vendor-pdfjs'
+          }
+          // Split docx
+          if (id.includes('node_modules/docx')) {
+            return 'vendor-docx'
+          }
+          // Split other vendor dependencies
+          if (id.includes('node_modules/')) {
+            return 'vendor'
+          }
+        }
       }
     }
   },
