@@ -7,49 +7,49 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://web-tools.io/json.html</loc>
+    <loc>https://web-tools.io/json</loc>
     <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://web-tools.io/base64.html</loc>
+    <loc>https://web-tools.io/base64</loc>
     <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://web-tools.io/javascript.html</loc>
+    <loc>https://web-tools.io/javascript</loc>
     <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://web-tools.io/css.html</loc>
+    <loc>https://web-tools.io/css</loc>
     <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://web-tools.io/xml.html</loc>
+    <loc>https://web-tools.io/xml</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://web-tools.io/qr.html</loc>
+    <loc>https://web-tools.io/qr</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://web-tools.io/pdf.html</loc>
+    <loc>https://web-tools.io/pdf</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://web-tools.io/jwt.html</loc>
+    <loc>https://web-tools.io/jwt</loc>
     <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
