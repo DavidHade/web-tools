@@ -23,6 +23,21 @@ export default defineConfig({
   base: '/',
   build: {
     outDir: 'dist',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info'],
+        passes: 2,
+      },
+      mangle: {
+        properties: true,
+      },
+      output: {
+        comments: false,
+      },
+    },
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
